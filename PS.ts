@@ -39,11 +39,28 @@ class Bola {
 
 } 
 
-class jogador {
-  constructor() {
-    this.id = 1; 
-    
+class Jogador {
+  constructor(tipoJ) {
+    this.id = tipoJ; 
+    this.largura = 20;
+    this.altura = 60;
+    if (this.id == 1) {
+      this.posicaoX = 0;
+      
+    } else if (this.id == 2) {
+      this.posicaoX = width - this.largura;
+      
+    }
+    this.posicaoY = height / 2 ; 
+    this.velocidade = 10;
   }
+
+  movimentar(){}
+  
+  desenhar(){ 
+    rect(this.posicaoX, this.posicaoY, this.largura, this.altura);
+  }
+  
 }
  
         
@@ -58,12 +75,15 @@ let velocidade: number
 
 
  function setup() {
-  createCanvas(500, 500);
+  createCanvas(400,400);
     posicaoX = width / 2;
     posicaoY = height / 2;
     velocidade = 3;
 
     Bola1 = new Bola();
+    jogador1 = new Jogador(1);
+    jogador2 = new Jogador(2);
+    
 }
 
 function draw() {
@@ -71,7 +91,8 @@ function draw() {
   Bola1.Desenhar();
   Bola1.Movimentar();
   Bola1.BorderCheck();
-  
+  jogador1.desenhar();
+  jogador2.desenhar();
   
 
 }
