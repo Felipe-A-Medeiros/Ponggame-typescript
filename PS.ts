@@ -52,10 +52,45 @@ class Jogador {
       
     }
     this.posicaoY = height / 2 ; 
-    this.velocidade = 10;
+    this.velocidadeY = 10;
   }
 
-  movimentar(){}
+  movimentar(){  
+    if (this.id == 1) { 
+      if(keyIsDown(SHIFT)){ 
+        if(this.posicaoY > 0 ) {
+          this.posicaoY -= this.velocidadeY;
+        } 
+        else {
+          this.posicaoY = 0;
+        }
+      }
+      if(keyIsDown(CONTROL)){
+        this.posicaoY +=this.velocidadeY;
+        if(this.posicaoY+this.altura>height){
+          this.posicaoY = height-this.altura;
+        }
+      }
+     }
+    else if (this.id == 2) {
+      if(keyIsDown(UP_ARROW)){ 
+        if(this.posicaoY > 0 ) {
+          this.posicaoY -= this.velocidadeY;
+        } 
+        else {
+          this.posicaoY = 0;
+        }
+      }
+      if(keyIsDown(DOWN_ARROW)){
+        this.posicaoY +=this.velocidadeY;
+        if(this.posicaoY+this.altura>height){
+          this.posicaoY = height-this.altura;
+        }
+      }
+
+    } 
+      
+  } 
   
   desenhar(){ 
     rect(this.posicaoX, this.posicaoY, this.largura, this.altura);
@@ -93,6 +128,8 @@ function draw() {
   Bola1.BorderCheck();
   jogador1.desenhar();
   jogador2.desenhar();
+  jogador1.movimentar();
+  jogador2.movimentar();
   
 
 }
